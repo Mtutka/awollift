@@ -61,7 +61,7 @@ button {
   height: 70vh;
   text-align: center;
   position: relative;
-  background-image: url(/pics/elevatorCropped.jpg);
+  background-image: url(pics/elevatorcrop.jpg);
   background-position: center;
   background-size: cover;
   z-index: -2;
