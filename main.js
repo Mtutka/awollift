@@ -16,6 +16,7 @@ const homeBtn = document.querySelector(".homeButton");
 const aboutBtn = document.querySelector(".aboutButton");
 const servicesBtn = document.querySelector(".servicesButton");
 const contactBtn = document.querySelector(".footerButton");
+const texts = document.getElementsByClassName("text");
 let servHeight = 100;
 let clicksCountServ = 0;
 let clicksCountRepair = 0;
@@ -33,6 +34,22 @@ const clear = () => {
   modTxt.classList.remove("txtOn");
   services.classList.remove("long");
 };
+
+for (i = 0; i < texts.length; i++) {
+  texts[i].addEventListener("click", () => {
+    window.scrollTo(0, services.offsetTop);
+
+    clicksCountRepair = 0;
+    clicksCountBuild = 0;
+    clicksCountServ = 0;
+    clicksCountMod = 0;
+    servTxt.classList.remove("txtOn");
+    repairTxt.classList.remove("txtOn");
+    buildTxt.classList.remove("txtOn");
+    modTxt.classList.remove("txtOn");
+    services.classList.remove("long");
+  });
+}
 
 burger.addEventListener("click", () => {
   nav.classList.toggle("show");
