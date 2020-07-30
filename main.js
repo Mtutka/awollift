@@ -106,10 +106,11 @@ contactBtn.addEventListener("click", () => {
   clear();
 });
 
-////////////////////////////////////////
-
 servImg.addEventListener("click", () => {
   servImg.classList.remove("short");
+  if (window.innerWidth < 1025) {
+    window.scrollTo(0, services.offsetTop);
+  }
 
   clicksCountServ = ++clicksCountServ;
   if (clicksCountServ % 2 == 1) {
@@ -138,6 +139,9 @@ servImg.addEventListener("click", () => {
 
 repairImg.addEventListener("click", () => {
   repairImg.classList.remove("short");
+  if (window.innerWidth < 1025) {
+    window.scrollTo(0, services.offsetTop);
+  }
 
   clicksCountRepair = ++clicksCountRepair;
   if (clicksCountRepair % 2 == 1) {
@@ -166,6 +170,9 @@ repairImg.addEventListener("click", () => {
 
 buildImg.addEventListener("click", () => {
   buildImg.classList.remove("short");
+  if (window.innerWidth < 1025) {
+    window.scrollTo(0, services.offsetTop);
+  }
 
   clicksCountBuild = ++clicksCountBuild;
   if (clicksCountBuild % 2 == 1) {
@@ -194,6 +201,9 @@ buildImg.addEventListener("click", () => {
 
 modImg.addEventListener("click", () => {
   modImg.classList.remove("short");
+  if (window.innerWidth < 1025) {
+    window.scrollTo(0, services.offsetTop);
+  }
 
   clicksCountMod = ++clicksCountMod;
   if (clicksCountMod % 2 == 1) {

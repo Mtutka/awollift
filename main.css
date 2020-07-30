@@ -110,6 +110,7 @@ nav {
   left: 0;
   z-index: 1;
   transition: all 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 nav.show {
@@ -214,9 +215,11 @@ button {
 .services {
   display: flex;
   height: 100vh;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   transition: ease-in-out 0.3s;
+  overflow: hidden;
 }
 
 .services .image {
@@ -228,6 +231,7 @@ button {
   background-position: center;
   background-size: cover;
   transition: 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .services .image.long {
@@ -324,6 +328,7 @@ button {
 
 footer {
   height: 100vh;
+  overflow: hidden;
 }
 
 footer h2 {
