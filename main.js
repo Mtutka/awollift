@@ -75,118 +75,6 @@ window.addEventListener("scroll", () => {
   prevScrollpos = currentScrollPos;
 });
 
-servImg.addEventListener("click", () => {
-  clicksCountServ = ++clicksCountServ;
-  if (clicksCountServ % 2 == 1) {
-    services.classList.add("long");
-    servImg.classList.add("long");
-  } else if (clicksCountServ % 2 == 0) {
-    services.classList.remove("long");
-    servImg.classList.remove("long");
-  }
-
-  clicksCountRepair = 0;
-  clicksCountBuild = 0;
-  clicksCountMod = 0;
-  servTxt.classList.toggle("txtOn");
-  repairTxt.classList.remove("txtOn");
-  buildTxt.classList.remove("txtOn");
-  modTxt.classList.remove("txtOn");
-  modImg.classList.remove("long");
-  repairImg.classList.remove("long");
-  buildImg.classList.remove("long");
-
-  if (window.innerWidth < 1025) {
-    window.scrollTo(0, services.offsetTop);
-  }
-});
-
-repairImg.addEventListener("click", () => {
-  clicksCountRepair = ++clicksCountRepair;
-  if (clicksCountRepair % 2 == 1) {
-    services.classList.add("long");
-    repairImg.classList.add("long");
-
-    if (window.innerWidth < 1025) {
-      window.scrollTo(0, services.offsetTop + window.innerHeight / 4 + 1);
-    }
-  } else if (clicksCountRepair % 2 == 0) {
-    services.classList.remove("long");
-    repairImg.classList.remove("long");
-
-    if (window.innerWidth < 1025) {
-      window.scrollTo(0, services.offsetTop);
-    }
-  }
-
-  clicksCountServ = 0;
-  clicksCountBuild = 0;
-  clicksCountMod = 0;
-  servTxt.classList.remove("txtOn");
-  repairTxt.classList.toggle("txtOn");
-  buildTxt.classList.remove("txtOn");
-  modTxt.classList.remove("txtOn");
-  servImg.classList.remove("long");
-  modImg.classList.remove("long");
-  buildImg.classList.remove("long");
-});
-
-buildImg.addEventListener("click", () => {
-  clicksCountBuild = ++clicksCountBuild;
-  if (clicksCountBuild % 2 == 1) {
-    services.classList.add("long");
-    buildImg.classList.add("long");
-    if (window.innerWidth < 1025) {
-      window.scrollTo(0, services.offsetTop + window.innerHeight / 2 + 1);
-    }
-  } else if (clicksCountBuild % 2 == 0) {
-    services.classList.remove("long");
-    buildImg.classList.remove("long");
-    if (window.innerWidth < 1025) {
-      window.scrollTo(0, services.offsetTop);
-    }
-  }
-
-  clicksCountRepair = 0;
-  clicksCountServ = 0;
-  clicksCountMod = 0;
-  servTxt.classList.remove("txtOn");
-  repairTxt.classList.remove("txtOn");
-  buildTxt.classList.toggle("txtOn");
-  modTxt.classList.remove("txtOn");
-  servImg.classList.remove("long");
-  modImg.classList.remove("long");
-  repairImg.classList.remove("long");
-});
-
-modImg.addEventListener("click", () => {
-  clicksCountMod = ++clicksCountMod;
-  if (clicksCountMod % 2 == 1) {
-    services.classList.add("long");
-    modImg.classList.add("long");
-    if (window.innerWidth < 1025) {
-      window.scrollTo(0, services.offsetTop + window.innerHeight * 0.75 + 1);
-    }
-  } else if (clicksCountMod % 2 == 0) {
-    services.classList.remove("long");
-    modImg.classList.remove("long");
-    if (window.innerWidth < 1025) {
-      window.scrollTo(0, services.offsetTop);
-    }
-  }
-
-  clicksCountRepair = 0;
-  clicksCountBuild = 0;
-  clicksCountServ = 0;
-  servTxt.classList.remove("txtOn");
-  repairTxt.classList.remove("txtOn");
-  buildTxt.classList.remove("txtOn");
-  modTxt.classList.toggle("txtOn");
-  servImg.classList.remove("long");
-  repairImg.classList.remove("long");
-  buildImg.classList.remove("long");
-});
-
 homeBtn.addEventListener("click", () => {
   window.scroll(0, 0);
   nav.classList.remove("show");
@@ -216,4 +104,118 @@ contactBtn.addEventListener("click", () => {
   nav.classList.remove("show");
   burger.classList.remove("is-active");
   clear();
+});
+
+////////////////////////////////////////
+
+servImg.addEventListener("click", () => {
+  servImg.classList.remove("short");
+
+  clicksCountServ = ++clicksCountServ;
+  if (clicksCountServ % 2 == 1) {
+    modImg.classList.add("short");
+    servImg.classList.add("long");
+    repairImg.classList.add("short");
+    buildImg.classList.add("short");
+  } else if (clicksCountServ % 2 == 0) {
+    modImg.classList.remove("short");
+    servImg.classList.remove("long");
+    repairImg.classList.remove("short");
+    buildImg.classList.remove("short");
+  }
+
+  clicksCountRepair = 0;
+  clicksCountBuild = 0;
+  clicksCountMod = 0;
+  servTxt.classList.toggle("txtOn");
+  repairTxt.classList.remove("txtOn");
+  buildTxt.classList.remove("txtOn");
+  modTxt.classList.remove("txtOn");
+  modImg.classList.remove("long");
+  repairImg.classList.remove("long");
+  buildImg.classList.remove("long");
+});
+
+repairImg.addEventListener("click", () => {
+  repairImg.classList.remove("short");
+
+  clicksCountRepair = ++clicksCountRepair;
+  if (clicksCountRepair % 2 == 1) {
+    modImg.classList.add("short");
+    servImg.classList.add("short");
+    repairImg.classList.add("long");
+    buildImg.classList.add("short");
+  } else if (clicksCountRepair % 2 == 0) {
+    modImg.classList.remove("short");
+    servImg.classList.remove("short");
+    repairImg.classList.remove("long");
+    buildImg.classList.remove("short");
+  }
+
+  clicksCountServ = 0;
+  clicksCountBuild = 0;
+  clicksCountMod = 0;
+  servTxt.classList.remove("txtOn");
+  repairTxt.classList.toggle("txtOn");
+  buildTxt.classList.remove("txtOn");
+  modTxt.classList.remove("txtOn");
+  servImg.classList.remove("long");
+  modImg.classList.remove("long");
+  buildImg.classList.remove("long");
+});
+
+buildImg.addEventListener("click", () => {
+  buildImg.classList.remove("short");
+
+  clicksCountBuild = ++clicksCountBuild;
+  if (clicksCountBuild % 2 == 1) {
+    modImg.classList.add("short");
+    servImg.classList.add("short");
+    repairImg.classList.add("short");
+    buildImg.classList.add("long");
+  } else if (clicksCountBuild % 2 == 0) {
+    modImg.classList.remove("short");
+    servImg.classList.remove("short");
+    repairImg.classList.remove("short");
+    buildImg.classList.remove("long");
+  }
+
+  clicksCountRepair = 0;
+  clicksCountServ = 0;
+  clicksCountMod = 0;
+  servTxt.classList.remove("txtOn");
+  repairTxt.classList.remove("txtOn");
+  buildTxt.classList.toggle("txtOn");
+  modTxt.classList.remove("txtOn");
+  servImg.classList.remove("long");
+  modImg.classList.remove("long");
+  repairImg.classList.remove("long");
+});
+
+modImg.addEventListener("click", () => {
+  modImg.classList.remove("short");
+
+  clicksCountMod = ++clicksCountMod;
+  if (clicksCountMod % 2 == 1) {
+    modImg.classList.add("long");
+    servImg.classList.add("short");
+    repairImg.classList.add("short");
+    buildImg.classList.add("short");
+  } else if (clicksCountMod % 2 == 0) {
+    modImg.classList.remove("long");
+    servImg.classList.remove("short");
+    repairImg.classList.remove("short");
+    buildImg.classList.remove("short");
+  }
+
+  clicksCountRepair = 0;
+  clicksCountBuild = 0;
+  clicksCountServ = 0;
+  servTxt.classList.remove("txtOn");
+  repairTxt.classList.remove("txtOn");
+  buildTxt.classList.remove("txtOn");
+  modTxt.classList.toggle("txtOn");
+  servImg.classList.remove("long");
+  repairImg.classList.remove("long");
+  buildImg.classList.remove("long");
 });

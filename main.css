@@ -1,3 +1,87 @@
+@keyframes slideOne {
+  0% {
+    left: -100%;
+  }
+  35% {
+    left: -100%;
+  }
+  50% {
+    left: 0;
+  }
+  60% {
+    left: 0;
+  }
+  75% {
+    left: -100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes slideTwo {
+  0% {
+    left: 0;
+  }
+  35% {
+    left: 0;
+  }
+  50% {
+    left: 100%;
+  }
+  60% {
+    left: 100%;
+  }
+  75% {
+    left: 0;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slideThree {
+  0% {
+    left: 100%;
+  }
+  35% {
+    left: 100%;
+  }
+  50% {
+    left: 0;
+  }
+  60% {
+    left: 0;
+  }
+  75% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes slideFour {
+  0% {
+    left: 0;
+  }
+  35% {
+    left: 0;
+  }
+  50% {
+    left: -100%;
+  }
+  60% {
+    left: -100%;
+  }
+  75% {
+    left: 0;
+  }
+  100% {
+    left: 0;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -135,15 +219,30 @@ button {
   transition: ease-in-out 0.3s;
 }
 
-.services.long {
-  height: 175vh;
-}
-
 .services .image {
   flex-grow: 1;
   width: 100%;
-  height: 20vh;
+  height: 25vh;
   opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: 0.3s ease-in-out;
+}
+
+.services .image.long {
+  height: 20vh;
+}
+.services .image.long .insideText {
+  margin-top: calc(10vh - 17px);
+}
+
+.services .image.short {
+  height: 10vh;
+}
+
+.services .image.short .insideText {
+  margin-top: calc(5vh - 17px);
 }
 
 .services h1 {
@@ -152,21 +251,16 @@ button {
   font-size: 45px;
 }
 
-.services .image {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  transition: 0.3s ease-in-out;
-}
 .services .text {
   display: none;
-  height: 75vh;
+  height: 50vh;
   margin: 5vh 10vw;
   text-align: justify;
   letter-spacing: 2px;
 }
 
 .insideText {
+  position: relative;
   margin-top: calc(12.5vh - 17px);
   font-size: 26px;
   line-height: 34px;
@@ -174,6 +268,34 @@ button {
   text-shadow: 1px 1px #000;
   letter-spacing: 5px;
   background-color: rgb(0, 0, 0, 0.7);
+}
+
+.repairing .insideText,
+.modernisation .insideText {
+  animation: slideFour 5s infinite;
+}
+
+.servicing .insideText,
+.building .insideText {
+  animation: slideTwo 5s infinite;
+}
+
+.click {
+  position: relative;
+  top: -34px;
+  left: -100%;
+  font-size: 26px;
+  line-height: 34px;
+  color: #fff;
+  text-shadow: 1px 1px #000;
+  letter-spacing: 5px;
+  background-color: rgb(0, 0, 0, 0.7);
+  animation: slideOne 5s infinite;
+}
+
+.click.rev {
+  left: 100%;
+  animation: slideThree 5s infinite;
 }
 
 .services .text.txtOn {
@@ -336,6 +458,11 @@ footer div p {
     display: block;
   }
 
+  .click {
+    display: none;
+    animation: none;
+  }
+
   .services {
     display: flex;
     height: 100vh;
@@ -345,14 +472,21 @@ footer div p {
     flex-wrap: wrap;
   }
 
-  .services.long {
-    display: flex;
-    height: 100vh;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
+  .services .image.long {
+    height: 50vh;
   }
+  .services .image.long .insideText {
+    margin-top: calc(25vh - 17px);
+  }
+
+  .services .image.short {
+    height: 50vh;
+  }
+
+  .services .image.short .insideText {
+    margin-top: calc(25vh - 17px);
+  }
+
   .services .text.txtOn {
     display: block;
     position: absolute;
@@ -360,9 +494,20 @@ footer div p {
     left: 0;
     width: 0;
     height: 0;
-    padding: 20px 30px;
     text-align: center;
     margin: 0 0 0 0;
+    overflow: hidden;
+  }
+
+  .services .text.txtOn p {
+    display: block;
+    width: 70%;
+    height: 80%;
+    margin: 10% 15% 10% 15%;
+    font-size: 2vh;
+    letter-spacing: 1px;
+    line-height: 3vh;
+    text-align: justify;
   }
 
   .services .text {
@@ -420,9 +565,18 @@ footer div p {
     letter-spacing: 5px;
     background-color: rgb(0, 0, 0, 0.7);
   }
+  .repairing .insideText,
+  .modernisation .insideText {
+    animation: none;
+  }
+
+  .servicing .insideText,
+  .building .insideText {
+    animation: none;
+  }
 
   .image.long {
-    opacity: 0.2;
+    opacity: 0.1;
   }
 
   footer h2 {
