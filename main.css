@@ -424,25 +424,25 @@ footer div p {
   .image.long {
     opacity: 0.2;
   }
-}
 
-footer h2 {
-  height: 25vh;
-  font-size: 8vh;
-  line-height: 15vh;
-  padding-top: 5vh;
-}
+  footer h2 {
+    height: 25vh;
+    font-size: 8vh;
+    line-height: 15vh;
+    padding-top: 5vh;
+  }
 
-footer div {
-  height: 25vh;
-  padding: 0 10%;
-}
+  footer div {
+    height: 25vh;
+    padding: 0 10%;
+  }
 
-footer div i {
-  font-size: 8vh;
-  padding: 0 10vw;
-}
-footer div p {
-  font-size: 5vh;
-  padding-right: 10vh;
+  footer div i {
+    font-size: 8vh;
+    padding: 0 10vw;
+  }
+  footer div p {
+    font-size: 5vh;
+    padding-right: 10vh;
+  }
 }
