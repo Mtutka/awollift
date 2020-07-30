@@ -37,7 +37,9 @@ const clear = () => {
 
 for (i = 0; i < texts.length; i++) {
   texts[i].addEventListener("click", () => {
-    window.scrollTo(0, services.offsetTop);
+    if (window.innerWidth < 1025) {
+      window.scrollTo(0, services.offsetTop);
+    }
 
     clicksCountRepair = 0;
     clicksCountBuild = 0;
@@ -48,6 +50,10 @@ for (i = 0; i < texts.length; i++) {
     buildTxt.classList.remove("txtOn");
     modTxt.classList.remove("txtOn");
     services.classList.remove("long");
+    servImg.classList.remove("long");
+    modImg.classList.remove("long");
+    repairImg.classList.remove("long");
+    buildImg.classList.remove("long");
   });
 }
 
@@ -73,8 +79,10 @@ servImg.addEventListener("click", () => {
   clicksCountServ = ++clicksCountServ;
   if (clicksCountServ % 2 == 1) {
     services.classList.add("long");
+    servImg.classList.add("long");
   } else if (clicksCountServ % 2 == 0) {
     services.classList.remove("long");
+    servImg.classList.remove("long");
   }
 
   clicksCountRepair = 0;
@@ -84,17 +92,31 @@ servImg.addEventListener("click", () => {
   repairTxt.classList.remove("txtOn");
   buildTxt.classList.remove("txtOn");
   modTxt.classList.remove("txtOn");
-  window.scrollTo(0, services.offsetTop);
+  modImg.classList.remove("long");
+  repairImg.classList.remove("long");
+  buildImg.classList.remove("long");
+
+  if (window.innerWidth < 1025) {
+    window.scrollTo(0, services.offsetTop);
+  }
 });
 
 repairImg.addEventListener("click", () => {
   clicksCountRepair = ++clicksCountRepair;
   if (clicksCountRepair % 2 == 1) {
     services.classList.add("long");
-    window.scrollTo(0, services.offsetTop + window.innerHeight / 4 + 1);
+    repairImg.classList.add("long");
+
+    if (window.innerWidth < 1025) {
+      window.scrollTo(0, services.offsetTop + window.innerHeight / 4 + 1);
+    }
   } else if (clicksCountRepair % 2 == 0) {
     services.classList.remove("long");
-    window.scrollTo(0, services.offsetTop);
+    repairImg.classList.remove("long");
+
+    if (window.innerWidth < 1025) {
+      window.scrollTo(0, services.offsetTop);
+    }
   }
 
   clicksCountServ = 0;
@@ -104,16 +126,25 @@ repairImg.addEventListener("click", () => {
   repairTxt.classList.toggle("txtOn");
   buildTxt.classList.remove("txtOn");
   modTxt.classList.remove("txtOn");
+  servImg.classList.remove("long");
+  modImg.classList.remove("long");
+  buildImg.classList.remove("long");
 });
 
 buildImg.addEventListener("click", () => {
   clicksCountBuild = ++clicksCountBuild;
   if (clicksCountBuild % 2 == 1) {
     services.classList.add("long");
-    window.scrollTo(0, services.offsetTop + window.innerHeight / 2 + 1);
+    buildImg.classList.add("long");
+    if (window.innerWidth < 1025) {
+      window.scrollTo(0, services.offsetTop + window.innerHeight / 2 + 1);
+    }
   } else if (clicksCountBuild % 2 == 0) {
     services.classList.remove("long");
-    window.scrollTo(0, services.offsetTop);
+    buildImg.classList.remove("long");
+    if (window.innerWidth < 1025) {
+      window.scrollTo(0, services.offsetTop);
+    }
   }
 
   clicksCountRepair = 0;
@@ -123,16 +154,25 @@ buildImg.addEventListener("click", () => {
   repairTxt.classList.remove("txtOn");
   buildTxt.classList.toggle("txtOn");
   modTxt.classList.remove("txtOn");
+  servImg.classList.remove("long");
+  modImg.classList.remove("long");
+  repairImg.classList.remove("long");
 });
 
 modImg.addEventListener("click", () => {
   clicksCountMod = ++clicksCountMod;
   if (clicksCountMod % 2 == 1) {
     services.classList.add("long");
-    window.scrollTo(0, services.offsetTop + window.innerHeight * 0.75 + 1);
+    modImg.classList.add("long");
+    if (window.innerWidth < 1025) {
+      window.scrollTo(0, services.offsetTop + window.innerHeight * 0.75 + 1);
+    }
   } else if (clicksCountMod % 2 == 0) {
     services.classList.remove("long");
-    window.scrollTo(0, services.offsetTop);
+    modImg.classList.remove("long");
+    if (window.innerWidth < 1025) {
+      window.scrollTo(0, services.offsetTop);
+    }
   }
 
   clicksCountRepair = 0;
@@ -142,6 +182,9 @@ modImg.addEventListener("click", () => {
   repairTxt.classList.remove("txtOn");
   buildTxt.classList.remove("txtOn");
   modTxt.classList.toggle("txtOn");
+  servImg.classList.remove("long");
+  repairImg.classList.remove("long");
+  buildImg.classList.remove("long");
 });
 
 homeBtn.addEventListener("click", () => {
