@@ -17,6 +17,15 @@ const aboutBtn = document.querySelector(".aboutButton");
 const servicesBtn = document.querySelector(".servicesButton");
 const contactBtn = document.querySelector(".footerButton");
 const texts = document.getElementsByClassName("text");
+const insideTextServ = document.querySelector(".servicing .insideText");
+const insideTextRepair = document.querySelector(".repairing .insideText");
+const insideTextBuild = document.querySelector(".building .insideText");
+const insideTextMod = document.querySelector(".modernisation .insideText");
+const animServ = document.querySelector(".servicing .click");
+const animRepair = document.querySelector(".repairing .click");
+const animBuild = document.querySelector(".building .click");
+const animMod = document.querySelector(".modernisation .click");
+
 let servHeight = 100;
 let clicksCountServ = 0;
 let clicksCountRepair = 0;
@@ -33,6 +42,14 @@ const clear = () => {
   buildTxt.classList.remove("txtOn");
   modTxt.classList.remove("txtOn");
   services.classList.remove("long");
+  servImg.classList.remove("long");
+  modImg.classList.remove("long");
+  repairImg.classList.remove("long");
+  buildImg.classList.remove("long");
+  modImg.classList.remove("short");
+  servImg.classList.remove("short");
+  repairImg.classList.remove("short");
+  buildImg.classList.remove("short");
 };
 
 for (i = 0; i < texts.length; i++) {
@@ -135,6 +152,8 @@ servImg.addEventListener("click", () => {
   modImg.classList.remove("long");
   repairImg.classList.remove("long");
   buildImg.classList.remove("long");
+  insideTextServ.classList.remove("anim");
+  animServ.classList.remove("anim");
 });
 
 repairImg.addEventListener("click", () => {
@@ -166,6 +185,8 @@ repairImg.addEventListener("click", () => {
   servImg.classList.remove("long");
   modImg.classList.remove("long");
   buildImg.classList.remove("long");
+  insideTextRepair.classList.remove("anim");
+  animRepair.classList.remove("anim");
 });
 
 buildImg.addEventListener("click", () => {
@@ -197,6 +218,8 @@ buildImg.addEventListener("click", () => {
   servImg.classList.remove("long");
   modImg.classList.remove("long");
   repairImg.classList.remove("long");
+  insideTextBuild.classList.remove("anim");
+  animBuild.classList.remove("anim");
 });
 
 modImg.addEventListener("click", () => {
@@ -228,4 +251,65 @@ modImg.addEventListener("click", () => {
   servImg.classList.remove("long");
   repairImg.classList.remove("long");
   buildImg.classList.remove("long");
+  insideTextMod.classList.remove("anim");
+  animMod.classList.remove("anim");
 });
+
+var TxtRotate = function (el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = "";
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function () {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) {
+    delta /= 2;
+  }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === "") {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function () {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function () {
+  var elements = document.getElementsByClassName("txt-rotate");
+  for (var i = 0; i < elements.length; i++) {
+    var toRotate = elements[i].getAttribute("data-rotate");
+    var period = elements[i].getAttribute("data-period");
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
